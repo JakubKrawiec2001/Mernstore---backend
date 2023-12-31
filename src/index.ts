@@ -14,8 +14,6 @@ app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/stripe", stripeRouter);
 
-mongoose.connect(
-	"mongodb+srv://kubakrawieckk04:kubakk2001@ecommerce.chuxxln.mongodb.net/ecommerce"
-);
+mongoose.connect(process.env.REACT_APP_MONGO_CONNECTION_KEY);
 
 app.listen(3001, () => console.log("SERVER STARTED"));

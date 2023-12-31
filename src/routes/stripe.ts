@@ -11,7 +11,9 @@ router.post("/create-checkout-session", async (req, res) => {
 		mode: "payment",
 		payment_method_types: ["card"],
 		billing_address_collection: "auto",
-		shipping_options: [{ shipping_rate: "shr_1OSd7UCA6BbZqroGwQpr2V3F" }],
+		shipping_options: [
+			{ shipping_rate: process.env.REACT_APP_STRIPE_SHIPPING_RATE },
+		],
 		line_items: req.body.cartItems.map((item) => ({
 			price_data: {
 				currency: "usd",
@@ -28,8 +30,8 @@ router.post("/create-checkout-session", async (req, res) => {
 			quantity: item.quantity,
 		})),
 
-		success_url: `http://localhost:3000/checkout-info-success`,
-		cancel_url: `http://localhost:3000/checkout-info-cancel`,
+		success_url: process.env.REACT_APP_STRIPE_SUCCESS_URL,
+		cancel_url: process.env.REACT_APP_STRIPE_CANCEL_URL,
 	});
 
 	res.status(200).json(session);
