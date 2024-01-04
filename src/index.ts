@@ -17,4 +17,4 @@ app.use("/stripe", stripeRouter);
 
 mongoose.connect(process.env.MONGODB_URL);
 
-app.listen(process.env.PORT || 3001, () => console.log("SERVER STARTED"));
+app.listen(3001, () => console.log("SERVER STARTED"));
