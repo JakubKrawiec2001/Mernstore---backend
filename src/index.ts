@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { userRouter } from "./routes/user";
 import { productRouter } from "./routes/product";
 import { stripeRouter } from "./routes/stripe";
+require("dotenv").config();
 
 const app = express();
 
@@ -16,4 +17,4 @@ app.use("/stripe", stripeRouter);
 
 mongoose.connect(process.env.REACT_APP_MONGO_CONNECTION_KEY);
 
-app.listen(3001, () => console.log("SERVER STARTED"));
+app.listen(process.env.PORT || 3001, () => console.log("SERVER STARTED"));
