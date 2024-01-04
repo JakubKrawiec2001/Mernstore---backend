@@ -15,6 +15,6 @@ app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/stripe", stripeRouter);
 
-mongoose.connect(process.env.REACT_APP_MONGO_CONNECTION_KEY);
+mongoose.connect(process.env.MONGODB_URL);
 
 app.listen(process.env.PORT || 3001, () => console.log("SERVER STARTED"));
